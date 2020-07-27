@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import GameWindow from './LayoutComponents/GameWindow';
-import Info from './LayoutComponents/Info';
+// import Info from './LayoutComponents/Info';
 
 function App() {
   return (

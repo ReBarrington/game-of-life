@@ -4,7 +4,7 @@ import './GameComponents.css'
 
 function Grid () {
 
-    const gridWidth = 25;
+    const gridWidth = 100;
     const gridHeight = gridWidth;
 
     function createGrid(rows) {
@@ -34,10 +34,12 @@ function Grid () {
         }
     }
 
+    fillRandom()
+
 
   return (
       <div className="Grid Container">
-          <CanvasComponent gridSize={gridSize} />
+          <CanvasComponent gridSize={gridSize} gridHeight={gridHeight} gridWidth={gridWidth}/>
       </div>
   );
 }
