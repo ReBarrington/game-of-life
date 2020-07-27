@@ -4,7 +4,7 @@ import Grid from '../GameComponents/Grid';
 function GameWindow() {
   return (
     <div>
-      <p> Game window here</p>
+      <p> Web page by Reagan Barrington </p>
       <Grid />
     </div>
   );

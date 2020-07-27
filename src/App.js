@@ -11,9 +11,6 @@ function App() {
           <div className="GameWindow">
             <GameWindow />
           </div>
-          {/* <div className="Info">
-            <Info />
-          </div> */}
         </div>
     </div>
   );

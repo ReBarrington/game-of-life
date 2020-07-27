@@ -4,7 +4,7 @@ import './GameComponents.css'
 
 function Grid () {
 
-    const gridWidth = 100;
+    const gridWidth = 25;
     const gridHeight = gridWidth;
 
     function createGrid(rows) {
@@ -15,7 +15,7 @@ function Grid () {
         return arr;
     }
 
-    const gridSize = createGrid(gridWidth)
+    const gridFill = createGrid(gridWidth)
 
 
     function fillRandom() { //fill the grid randomly with 1s or 0s
@@ -26,9 +26,9 @@ function Grid () {
                 var randomBinary = Math.floor(improvedNum);
 
                 if (randomBinary === 1) {
-                    gridSize[j][k] = 1;
+                    gridFill[j][k] = 1;
                 } else {
-                    gridSize[j][k] = 0;
+                    gridFill[j][k] = 0;
                 }
             }
         }
@@ -39,7 +39,7 @@ function Grid () {
 
   return (
       <div className="Grid Container">
-          <CanvasComponent gridSize={gridSize} gridHeight={gridHeight} gridWidth={gridWidth}/>
+          <CanvasComponent gridFill={gridFill} gridHeight={gridHeight} gridWidth={gridWidth} fillRandom={fillRandom}/>
       </div>
   );
 }
