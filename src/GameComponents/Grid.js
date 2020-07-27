@@ -1,6 +1,6 @@
 import React from 'react';
-import CanvasComponent from './Canvas';
 import './GameComponents.css'
+import Canvas from './Canvas';
 
 function Grid () {
 
@@ -34,12 +34,10 @@ function Grid () {
         }
     }
 
-    fillRandom()
-
 
   return (
       <div className="Grid Container">
-          <CanvasComponent gridFill={gridFill} gridHeight={gridHeight} gridWidth={gridWidth} fillRandom={fillRandom}/>
+          <Canvas gridFill={gridFill} gridHeight={gridHeight} gridWidth={gridWidth} fillRandom={fillRandom}/>
       </div>
   );
 }

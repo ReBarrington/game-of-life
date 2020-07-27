@@ -9,10 +9,10 @@ const GameOptions = props => {
     // }
 
     return (
-        <button
-        >
-            Start with Random
-        </button>
+        <div className="buttons">
+            <button onClick={props.random}> Start with Random </button>
+            <button onClick={props.clear} > CLEAR </button>
+        </div>
     )
 }
 
