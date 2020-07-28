@@ -26,11 +26,11 @@ class Main extends React.Component {
     // create copy of the 2d array
     let gridCopy = arrayClone(this.state.gridFull);
     // find clicked array item and set to on
-    if (this.state.evolving === false) {
       gridCopy[row][col] = ! gridCopy[row][col];
-      this.setState({
-        gridFull: gridCopy
-      })
+      if (this.state.evolving === false) {
+        this.setState({
+          gridFull: gridCopy
+        })
     }
   }
 
@@ -107,30 +107,71 @@ class Main extends React.Component {
     let g = this.state.gridFull;
     let g2 = arrayClone(this.state.gridFull);
 
-    for (let i = 0; i < this.rows; i ++) {
-      for (let j = 0; j < this.cols; j++) {
+    for (let j = 1; j < this.rows -1; j ++) {
+      for (let k = 0; k < this.cols -1; k++) {
         let count = 0;
         
         // game of life rules
         // checking neighbors
-		    if (i > 0) if (g[i - 1][j]) count++;
-		    if (i > 0 && j > 0) if (g[i - 1][j - 1]) count++;
-		    if (i > 0 && j < this.cols - 1) if (g[i - 1][j + 1]) count++;
-		    if (j < this.cols - 1) if (g[i][j + 1]) count++;
-		    if (j > 0) if (g[i][j - 1]) count++;
-		    if (i < this.rows - 1) if (g[i + 1][j]) count++;
-		    if (i < this.rows - 1 && j > 0) if (g[i + 1][j - 1]) count++;
-        if (i < this.rows - 1 && j < this.cols - 1) if (g[i + 1][j + 1]) count++;
-        // turn on or off
-		    if (g[i][j] && (count < 2 || count > 3)) g2[i][j] = false;
-		    if (!g[i][j] && count === 3) g2[i][j] = true;
-		  }
+  
+        //add up the total values for the surrounding cells
+        count += g[j - 1][k - 1]; //top left
+        count += g[j - 1][k]; //top center
+        count += g[j - 1][k + 1]; //top right
+        count += g[j][k - 1]; //middle left
+        count += g[j][k + 1]; //middle right
+        count += g[j + 1][k - 1]; //bottom left
+        count += g[j + 1][k]; //bottom center
+        count += g[j + 1][k + 1]; //bottom right
+
+        //apply the rules to each cell
+        if (g[j][k] === 0) {
+          switch (count) {
+            case 3:
+              g2[j][k] = 1; //if cell is dead and has 3 neighbours, switch it on
+              break;
+            default:
+              g2[j][k] = 0; //otherwise leave it dead
+          }
+        
+        } else if (g[j][k] === 1) { //apply rules to living cell
+            switch (count) {
+              case 0:
+              case 1:
+                g2[j][k] = 0; //die of lonelines
+                break;
+              case 2:
+              case 3:
+                g2[j][k] = 1; //carry on living
+                break;
+              case 4:
+              case 5:
+              case 6:
+              case 7:
+              case 8:
+                g2[j][k] = 0; //die of overcrowding
+                break;
+              default:
+                g2[j][k] = 0; //
+            }
+        }
+      }
+    
+    }
+    //copy mirrorGrid to theGrid
+    for (var j = 0; j < this.rows; j++) { //iterate through rows
+      for (var k = 0; k < this.cols; k++) { //iterate through columns
+        g[j][k] = g2[j][k];
+      }
     }
     this.setState({
-		  gridFull: g2,
-		  generation: this.state.generation + 1
-		});
+      gridFull: g2,
+      generation: this.state.generation + 1,
+      evolving: true
+    });
   }
+
+
 
   render() {
     return (
@@ -157,6 +198,7 @@ class Main extends React.Component {
     )
   }
 }
+
 
 function arrayClone(arr) {
   return JSON.parse(JSON.stringify(arr));
