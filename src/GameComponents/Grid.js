@@ -8,14 +8,14 @@ class Grid extends React.Component {
         const width = (this.props.cols * 14);
         const rowsArr = [];
 
-        const boxClass = "";
+        let boxClass = "";
 
         for (let i = 0; i < this.props.rows; i ++ ){
             for (let j = 0; j < this.props.rows; j ++ ){
                 
                 let boxId = i + "_" + j;
 
-                let boxClass = this.props.gridFull[i][j] ? "box on" : "box off"
+                boxClass = this.props.gridFull[i][j] ? "box on" : "box off"
 
                 rowsArr.push(
                     <Box 

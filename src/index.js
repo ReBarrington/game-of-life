@@ -16,6 +16,7 @@ class Main extends React.Component {
 
     this.state = {
       generation: 0,
+      evolving: false,
       // make an array as big as the rows and another as big as the cols. creates 2D array that has all boxes set to off
       gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
     }
@@ -25,10 +26,12 @@ class Main extends React.Component {
     // create copy of the 2d array
     let gridCopy = arrayClone(this.state.gridFull);
     // find clicked array item and set to on
-    gridCopy[row][col] = ! gridCopy[row][col];
-    this.setState({
-      gridFull: gridCopy
-    })
+    if (this.state.evolving === false) {
+      gridCopy[row][col] = ! gridCopy[row][col];
+      this.setState({
+        gridFull: gridCopy
+      })
+    }
   }
 
   fillRandomly = () => {
@@ -49,17 +52,24 @@ class Main extends React.Component {
   evolveButton = () => {
     clearInterval((this.intervalID))
     this.intervalID = setInterval(this.evolve, this.speed)
+    this.setState({
+      evolving: true
+    })
   }
 
   pauseButton = () => {
     clearInterval(this.intervalID)
+    this.setState({
+      evolving: false
+    })
   }
 
   clear = () => {
     const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
 		this.setState({
 			gridFull: grid,
-			generation: 0
+      generation: 0,
+      evolving: false
 		});
   }
 
@@ -122,16 +132,12 @@ class Main extends React.Component {
 		});
   }
 
-  componentDidMount() {
-    this.fillRandomly()
-    // this.evolveButton()
-  }
-
   render() {
     return (
       <div>
         <h1>The Game of Life</h1>
         <Buttons 
+          evolving={this.state.evolving}
           evolveButton={this.evolveButton}
           pauseButton={this.pauseButton}
           slow={this.slow}
