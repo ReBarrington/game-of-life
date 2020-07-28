@@ -1,0 +1,50 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1515387784663-e2e29a23f69e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4834&q=80");
+    background-size: cover;
+}
+
+.box {
+    display: inline-block;
+    border: 1px solid #66FF00;
+    width: 15px;
+    height: 15px;
+    /* keep border 1px when next to other boxes */
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.off {
+    background-color: black;
+}
+
+.on {
+    background-color: #66FF00;
+}
+
+.box:hover {
+    background: lighten(25%);
+}
+
+.center {
+    margin: auto;
+    display: table;
+    margin-top: 10px;
+}
+
+.grid {
+    background-color: black;
+    width: 150px;
+    line-height: 0;
+    margin: auto;
+    box-shadow: 0px 0px 20px white;
+    margin-top: 20px;
+}
+
+h1, h2, h3, h4 {
+    color: #66FF00;
+    background-color: black;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    margin-top: 10px;
+}

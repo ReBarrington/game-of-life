@@ -1,45 +1,42 @@
 import React from 'react';
-import './GameComponents.css'
-import Canvas from './Canvas';
+import Box from './Box';
+import '../index.css'
 
-function Grid () {
+class Grid extends React.Component {
 
-    const gridWidth = 25;
-    const gridHeight = gridWidth;
+    render() {
+        const width = (this.props.cols * 16);
+        const rowsArr = [];
 
-    function createGrid(rows) {
-        const arr = [];
-        for (let i = 0; i < rows; i++ ) {
-            arr[i] = [];
-        }
-        return arr;
-    }
+        const boxClass = "";
 
-    const gridFill = createGrid(gridWidth)
+        for (let i = 0; i < this.props.rows; i ++ ){
+            for (let j = 0; j < this.props.rows; j ++ ){
+                
+                let boxId = i + "_" + j;
 
+                let boxClass = this.props.gridFull[i][j] ? "box on" : "box off"
 
-    function fillRandom() { //fill the grid randomly with 1s or 0s
-        for (var j = 0; j < gridHeight; j++) { //iterate through rows
-            for (var k = 0; k < gridWidth; k++) { //iterate through columns
-                var rawRandom = Math.random(); //get a raw random number
-                var improvedNum = (rawRandom * 2); //convert it to an int
-                var randomBinary = Math.floor(improvedNum);
-
-                if (randomBinary === 1) {
-                    gridFill[j][k] = 1;
-                } else {
-                    gridFill[j][k] = 0;
-                }
+                rowsArr.push(
+                    <Box 
+                        boxClass={boxClass}
+                        key={boxId}
+                        boxId={boxId}
+                        row={i}
+                        col={j}
+                        selectBox={this.props.selectBox}
+                    />
+                )
             }
         }
+
+        return (
+            <div className="grid" style={{width: width}}>
+                {rowsArr}
+            </div>
+        );
     }
 
-
-  return (
-      <div className="Grid Container">
-          <Canvas gridFill={gridFill} gridHeight={gridHeight} gridWidth={gridWidth} fillRandom={fillRandom}/>
-      </div>
-  );
 }
 
 export default Grid;
