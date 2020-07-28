@@ -4,7 +4,9 @@ import '../index.css'
 class Box extends React.Component {
 
     selectBox = () => {
-        this.props.selectBox(this.props.row, this.props.col)
+        if (this.props.evolving === false) {
+            this.props.selectBox(this.props.row, this.props.col)
+        }
     }
 
     render() {

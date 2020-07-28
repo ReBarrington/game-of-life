@@ -6,13 +6,17 @@ class Grid extends React.Component {
 
 
     render() {
-        const width = (this.props.cols * 13);
+
+    console.log(this.props, ' is props in Grid')
+
+
+        const width = (this.props.cols * 14);
         const rowsArr = [];
 
         let boxClass = "";
 
         for (let i = 0; i < this.props.rows; i ++ ){
-            for (let j = 0; j < this.props.rows; j ++ ){
+            for (let j = 0; j < this.props.cols; j ++ ){
                 
                 let boxId = i + "_" + j;
 
@@ -26,6 +30,7 @@ class Grid extends React.Component {
                         row={i}
                         col={j}
                         selectBox={this.props.selectBox}
+                        evolving={this.props.evolving}
                     />
                 )
             }
