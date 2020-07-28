@@ -85,16 +85,16 @@ class Main extends React.Component {
 	gridSize = (size) => {
 		switch (size) {
 			case "1":
-				this.cols = 20;
-				this.rows = 10;
+				this.cols = 30;
+				this.rows = 20;
 			break;
 			case "2":
-				this.cols = 50;
-				this.rows = 30;
+				this.cols = 60;
+				this.rows = 40;
 			break;
 			default:
-				this.cols = 70;
-				this.rows = 50;
+				this.cols = 90;
+				this.rows = 60;
 		}
 		this.clear();
 
