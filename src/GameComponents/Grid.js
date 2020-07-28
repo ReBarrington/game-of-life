@@ -4,8 +4,9 @@ import '../index.css'
 
 class Grid extends React.Component {
 
+
     render() {
-        const width = (this.props.cols * 14);
+        const width = (this.props.cols * 13);
         const rowsArr = [];
 
         let boxClass = "";
