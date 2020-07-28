@@ -52,8 +52,44 @@ class Main extends React.Component {
   }
 
   pauseButton = () => {
-
+    clearInterval(this.intervalID)
   }
+
+  clear = () => {
+    const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+		this.setState({
+			gridFull: grid,
+			generation: 0
+		});
+  }
+
+  slow = () => {
+		this.speed = 1000;
+		this.evolveButton();
+	}
+
+	fast = () => {
+		this.speed = 100;
+		this.evolveButton();
+  }
+  
+  gridSize = (size) => {
+		switch (size) {
+			case "1":
+				this.cols = 20;
+				this.rows = 10;
+			break;
+			case "2":
+				this.cols = 50;
+				this.rows = 30;
+			break;
+			default:
+				this.cols = 70;
+				this.rows = 50;
+		}
+		this.clear();
+
+	}
 
   evolve = () => {
     // make 2 copies

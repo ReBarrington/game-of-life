@@ -1,35 +1,44 @@
 import React from 'react';
-import { ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Button, ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
 import '../index.css'
 
 class Buttons extends React.Component {
+
+    handleSelect = (e) => {
+        this.props.gridSize(e)
+    }
 
     render() {
         return (
             <div className="center">
                 <ButtonToolbar>
-                    <button className="btn btn-default" onClick={this.props.evolveButton}>
-                        Evolve
-                    </button>
-                    <button className="btn btn-default" onClick={this.props.pauseButton}>
+                    <DropdownButton
+                        title="Evolve"
+                        id="size-menu"
+                        onSelect={this.props.evolveButton}
+                        variant="dark"
+                    >
+                        <Dropdown.Item variant="dark" className="btn btn-default" onClick={this.props.slow}>
+                            Slow
+                        </Dropdown.Item>
+                        <Dropdown.Item variant="dark" className="btn btn-default" onClick={this.props.fast}>
+                            Fast
+                        </Dropdown.Item>
+                    </DropdownButton>
+                    <Button variant="dark" className="btn btn-default" onClick={this.props.pauseButton}>
                         Pause
-                    </button>
-                    <button className="btn btn-default" onClick={this.props.clear}>
+                    </Button>
+                    <Button variant="dark" className="btn btn-default" onClick={this.props.clear}>
                         Clear
-                    </button>
-                    <button className="btn btn-default" onClick={this.props.slow}>
-                        Slow
-                    </button>
-                    <button className="btn btn-default" onClick={this.props.fast}>
-                        Fast
-                    </button>
-                    <button className="btn btn-default" onClick={this.props.fillRandomly}>
+                    </Button>
+                    <Button variant="dark" className="btn btn-default" onClick={this.props.fillRandomly}>
                         Populate Randomly
-                    </button>
+                    </Button>
                     <DropdownButton
                         title="Grid Size"
                         id="size-menu"
                         onSelect={this.handleSelect}
+                        variant="dark"
                     >
                         <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
                         <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
