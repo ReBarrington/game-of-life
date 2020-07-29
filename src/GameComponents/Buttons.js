@@ -10,8 +10,8 @@ class Buttons extends React.Component {
 
     render() {
         return (
-            <div className="center">
-                <ButtonToolbar>
+            <div className="btn-cont">
+                <ButtonToolbar className="buttons">
                     <DropdownButton
                         title="Evolve"
                         id="size-menu"

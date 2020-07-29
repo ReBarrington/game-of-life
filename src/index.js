@@ -167,8 +167,8 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>The Game of Life</h1>
+      <div className="app">
+        <h1>THE GAME OF LIFE</h1>
         <Buttons 
           evolving={this.state.evolving}
           evolveButton={this.evolveButton}
