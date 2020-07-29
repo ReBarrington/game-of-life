@@ -1,51 +1,74 @@
 body {
-    background-image: url(https://images.unsplash.com/photo-1515387784663-e2e29a23f69e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=4834&q=80);
-  }
+    background-image: url(./imgs/kacper-chrzanowski-25RUpGGQPs8-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
     
-  .box {
+.box {
     display: inline-block;       
     border: 1px solid black;
     width: 15px;
     height: 15px;
     margin-left: -1px;
     margin-bottom: -1px;
-    }
+}
   
-  .off {
+.off {
     background-color: black;
-  }
+}
   
-  .on {
+.on {
     background-color: #66FF00;
-  }
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.lightblue {
+    background-color: cyan;
+}
+
+.blue {
+    background-color: blue;
+}
     
-  .box:hover { 
+.box:hover { 
     background: lighten(25%);
-  }
+}
   
-  .center {
+.center {
     margin: auto;
     display: table;
     margin-top: 10px;
-  }
+}
   
-  .grid {
+.grid {
     width: 150px;
     line-height: 0;
     margin: auto;
     box-shadow: 0px 0px 20px white;
     margin-top: 20px;
-  }
+}
     
-  h1, h2, h3, h4 {
+h1, h2, h3, h4 {
     color:  #66FF00;
     background-color: black;
     margin: auto;
     text-align: center;
     width: 50%;
     margin-top: 10px;
-  }
+}
   
-  h4 {
+h4 {
     margin-top: 0px;
-  }
+}
+

@@ -20,7 +20,11 @@ class Grid extends React.Component {
                 
                 let boxId = i + "_" + j;
 
-                boxClass = this.props.gridFull[i][j] ? "box on" : "box off"
+                boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
+                
+                if (this.props.color !== "default" && boxClass === "box on") {
+                    boxClass += ` ${this.props.color}`
+                }
 
                 rowsArr.push(
                     <Box 
@@ -31,6 +35,7 @@ class Grid extends React.Component {
                         col={j}
                         selectBox={this.props.selectBox}
                         evolving={this.props.evolving}
+                        color={this.props.color}
                     />
                 )
             }

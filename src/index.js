@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css'
 import Grid from './GameComponents/Grid';
 import Buttons from './GameComponents/Buttons';
+import Options from './GameComponents/Options';
 
 
 class Main extends React.Component {
@@ -18,7 +19,8 @@ class Main extends React.Component {
       generation: 0,
       evolving: false,
       // make an array as big as the rows and another as big as the cols. creates 2D array that has all boxes set to off
-      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false))
+      gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(false)),
+      color: "default"
     }
   }
 
@@ -125,7 +127,41 @@ class Main extends React.Component {
       generation: this.state.generation + 1,
 		});
 
-	}
+  }
+  
+  changeColor = () => {
+    console.log(' changing color from ', this.state.color)
+    if (this.state.color === "default") {
+      this.setState({
+        color: "red"
+      })
+    }
+    else if (this.state.color === "red") {
+      this.setState({
+        color: "yellow"
+      })
+    }
+    else if (this.state.color === "yellow") {
+      this.setState({
+        color: "orange"
+      })
+    }
+    else if (this.state.color === "orange") {
+      this.setState({
+        color: "lightblue"
+      })
+    }
+    else if (this.state.color === "lightblue") {
+      this.setState({
+        color: "blue"
+      })
+    }
+    else if (this.state.color === "blue") {
+      this.setState({
+        color: "default"
+      })
+    }
+  }   
 
 
 
@@ -149,8 +185,10 @@ class Main extends React.Component {
           cols={this.cols}
           selectBox={this.selectBox}
           evolving={this.state.evolving}
+          color={this.state.color}
         />
         <h2>Generations: {this.state.generation}</h2>
+        <Options changeColor={this.changeColor} colorTheme={this.state.color} />
       </div>
     )
   }
