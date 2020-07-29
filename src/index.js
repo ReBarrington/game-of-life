@@ -36,7 +36,7 @@ class Main extends React.Component {
   fillRandomly = () => {
     let gridCopy = arrayClone(this.state.gridFull);
     for (let i = 0; i < this.rows; i ++ ) { 
-      for (let j = 0; j < this.rows; j ++ ) {
+      for (let j = 0; j < this.cols; j ++ ) {
         // randomy create number between 1 and 4 (25% chance of turning on)
         if (Math.floor(Math.random() * 4) === 1) {
           gridCopy[i][j] = true
