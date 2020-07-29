@@ -63,6 +63,11 @@ body {
     display: flex;
     justify-content: space-around;
 }
+
+.modal {
+    padding: 10%;
+    background-color: black;
+}
   
 .grid {
     width: 150px;
@@ -87,3 +92,19 @@ h4 {
     margin-top: 0px;
 }
 
+p {
+    font-family: 'VT323', monospace;
+    color: #66FF00;
+    font-size: 150%;
+    padding: 2%;
+}
+
+#rules {
+    background-color: black;
+    padding: 5%;
+    margin-top: 5%;
+}
+
+.Overlay {
+    background-color: black;
+}

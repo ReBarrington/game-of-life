@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, ButtonToolbar, DropdownButton, Dropdown } from 'react-bootstrap';
+import Rules from './Rules';
 import '../index.css'
 
 class Options extends React.Component {
@@ -12,9 +13,7 @@ class Options extends React.Component {
                     <Button variant="dark" className="btn btn-default" onClick={this.props.changeColor}>
                         Change Color
                     </Button>
-                    <Button variant="dark" className="btn btn-default">
-                        Rules of Game
-                    </Button>
+                    <Rules />
                 </ButtonToolbar>
             </div>
         )
