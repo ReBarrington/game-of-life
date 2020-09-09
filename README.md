@@ -1,5 +1,5 @@
-# Cellular Automata and Conway's "Game of Life"
-
+## Cellular Automata and Conway's "Game of Life"
+[Deployed Project](https://game-of-life-pearl.vercel.app/)
 ---
 
 
